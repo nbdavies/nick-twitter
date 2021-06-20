@@ -34,7 +34,7 @@ class App extends React.Component {
 
   handleCreation(tweet){
     this.setState({
-      tweets: this.state.tweets.concat(tweet)
+      tweets: [tweet].concat(this.state.tweets)
     })
   }
 }
