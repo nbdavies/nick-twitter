@@ -1,3 +1,4 @@
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
 <div id='app'></div>
+<%= content_tag :div, nil, id: 'user', data: { user: current_user.to_json } %>
 <%= javascript_pack_tag 'app' %>

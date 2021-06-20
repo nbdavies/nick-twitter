@@ -5,7 +5,7 @@ class Tweet extends React.Component {
   constructor(props) {
     super(props);
     this.handleRetweet = this.handleRetweet.bind(this);
-    this.state = { retweeted: this.props.tweet.retweeted }
+    this.state = { retweeted: this.alreadyRetweeted() }
   }
   
   render(){
@@ -41,6 +41,12 @@ class Tweet extends React.Component {
         this.setState({ retweeted: true })
       })
     return false;
+  }
+
+  alreadyRetweeted(){
+    return this.props.tweet.retweet_tweets.some(retweet_tweet =>
+      (retweet_tweet.user_id == this.props.user.id)
+    )
   }
 }
 
