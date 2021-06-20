@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
 
-Things you may want to cover:
+Included in this application:
 
-* Ruby version
+* User authentication using Devise
+* Writing tweets
+* Basic retweeting (posting the text of an existing tweet, but attributed to a new user)
+* Counting likes
 
-* System dependencies
+On the project roadmap:
 
-* Configuration
+* Make the layout more appealing using Bootstrap classes
+* Attribute retweets to the original user as well
+* Incorporate the Devise authentication views into the React single page app
+* Display/enforce tweet character limit
+* Identify users by a username instead of email address
+* Add tests, starting with an integration test
+* Allow users to un-like
+* Allow unauthenticated users to view non-interactive timeline
 
-* Database creation
+## Getting started
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bundle install
+rails db:create db:setup
+rails s
+```
