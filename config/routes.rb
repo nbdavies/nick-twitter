@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :tweets, only: [:create, :index] do
     post :retweet, on: :member
+    post :like, on: :member
   end
 end
