@@ -27,7 +27,7 @@ class App extends React.Component {
       <div>
         <h2>Nick Twitter</h2>
         <NewTweet onCreation={this.handleCreation} />
-        <TweetList tweets={this.state.tweets} />
+        <TweetList tweets={this.state.tweets} onCreation={this.handleCreation} />
       </div>
     )
   }

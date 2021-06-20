@@ -8,6 +8,13 @@ class TweetsController < ApplicationController
   
   def index
     tweets = Tweet.order(id: :desc).all
-    render json: tweets.as_json(include: :user)
+    render json: tweets.as_json(include: [:user, :retweet_tweets])
+  end
+  
+  def retweet
+    tweet = Tweet.find(params[:id])
+    new_tweet = Tweet.create!(text: tweet.text, user: current_user)
+    Retweet.create!(tweet: new_tweet, retweeted_tweet: tweet)
+    render json: new_tweet.as_json(include: [:user])
   end
 end

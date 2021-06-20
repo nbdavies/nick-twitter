@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_221507) do
+ActiveRecord::Schema.define(version: 2021_06_20_212732) do
+
+  create_table "retweets", force: :cascade do |t|
+    t.integer "tweet_id"
+    t.integer "retweeted_tweet_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["retweeted_tweet_id"], name: "index_retweets_on_retweeted_tweet_id"
+    t.index ["tweet_id"], name: "index_retweets_on_tweet_id"
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.string "text"
@@ -32,5 +41,7 @@ ActiveRecord::Schema.define(version: 2021_06_19_221507) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "retweets", "tweets"
+  add_foreign_key "retweets", "tweets", column: "retweeted_tweet_id"
   add_foreign_key "tweets", "users"
 end
